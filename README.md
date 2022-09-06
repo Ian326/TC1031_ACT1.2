@@ -6,8 +6,8 @@ En este repositorio de trabajo encontrarás los archivos "search.h", "bubble.h",
 ```
 // =========================================================
 // File: main.cpp
-// Author: Edward Elric - A00123456
-// Date: 01/01/2021
+// Author: Ian Joab Padron Corona - A01708940
+// Date: 06/09/2022
 // =========================================================
 ```
 
