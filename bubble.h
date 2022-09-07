@@ -42,16 +42,22 @@ int bubbleSort(T *arr, int size) {
 // =================================================================
 template <class T>
 int bubbleSort(std::vector<T> &v) {
+	vector <int> a = v;
 	int counter = 0;
-	for(int i = v.size() - 1; i > 0; i--){
-		for(int j = 0; j < i; j++){
-			if(v[j] > v[j + 1]){
-				swap(v, j, j + 1);
+  bool bandera = false;
+  for(int i = 0; i<a.size(); i++){
+    for(int j = 0; j<a.size()-1; j++){
+      if(a[j+1] < a[j]){
 				counter++;
-			}
-		}
-	}
-	return counter;
+        swap(a[j+1],a[j]);
+        bandera = true;
+      }
+    }
+    if(bandera = false){
+      break;
+    }
+  }
+  return counter;
 }
 
 #endif /* BUBBLE_H */

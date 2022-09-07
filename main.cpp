@@ -7,7 +7,8 @@
 // =================================================================
 #include <iostream>
 #include <vector>
-#include "fstream"
+#include <fstream>
+#include <string>
 #include "header.h"
 #include "search.h"
 #include "bubble.h"
@@ -20,43 +21,34 @@ int main(int argc, char* argv[]) {
 	ifstream inputFile;
 	ofstream outputFile;
 	int n, search, number;
-	if (argc!=3) {
-		cout<<"usage: "<<argv[0]<<"input_file output_file"<<endl;
-		return -1;
-	}
-	inputFile.open(argv[1]);
-	if (!inputFile.is_open()) {
-		cout<<argv[0]<<" File \""<<argv[1]<<"\" Error al abrir archivo"<<endl;
-		return -1;
-	}
-	outputFile.open(argv[2]);
-	if (outputFile.fail()){
-		cout << "Error al escribir archivo de salida" << endl;
-		return -1;
-	}
 
-	outputFile.open(argv[2]);
+	inputFile.open(argv[1], ios::in);
+	outputFile.open(argv[2], ios::out);
+
 	inputFile>>n;
-	vector<int>numbers(n);
+
+	vector<int> numbers(n);
 	for (int i=0; i<n; i++) {
 		inputFile>>number;
 		numbers[i]=number;
 	}
+
 	int bubble, selection, insertion;
-	vector<int> x=numbers;
-	bubble=bubbleSort(x);
-	x=numbers;
-	selection=selectionSort(x);
-	x=numbers;
-	insertion=insertionSort(x);
-	outputFile<<bubble<<" "<<selection<<" "<<insertion<<endl;
+
+	bubble=bubbleSort(numbers);
+
+	selection=selectionSort(numbers);
+
+	insertion=insertionSort(numbers);
+
+	outputFile<<bubble<<" "<<selection<<" "<<insertion<<"\n\n";
 	inputFile>>search;
 	pair<int, int>solution;
 	for (int i=0; i<search; i++) {
 		inputFile>>number;
-		solution=sequentialSearch(x, number);
+		solution=sequentialSearch(numbers, number);
 		outputFile<<solution.first<<" "<<solution.second<<" ";
-		solution=binarySearch(x, number);
+		solution=binarySearch(numbers, number);
 		outputFile<<solution.second<<endl;
 	}
 	inputFile.close();

@@ -48,19 +48,20 @@ int selectionSort(T *arr, int size) {
 // @param A, a vector of T elements.
 // =================================================================
 template <class T>
-int selectionSort(std::vector<T> &v) {
+int selectionSort(std::vector<T> v) {
+	vector<T> a = v;
 	int pos;
 	int counter = 0;
-	for(int i = v.size() - 1; i > 0; i--){
+	for(int i = a.size() - 1; i > 0; i--){
 		pos = 0;
 		for(int j = 1; j <= i; j++){
-			if(v[j] > v[pos]){
+			if(a[j] > a[pos]){
 				pos = j;
 			}
 		}
 
 		if (pos != i){
-			swap(v, i, pos);
+			swap(a, i, pos);
 			counter++;
 		}
 	}

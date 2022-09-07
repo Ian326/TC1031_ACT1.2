@@ -40,14 +40,16 @@ int insertionSort(T *arr, int size) {
 // =================================================================
 template <class T>
 int insertionSort(std::vector<T> &v) {
-	int counter = 0;
+
+	int xounter = 0;
 	for(int i = 1; i < v.size(); i++){
 		for(int j = i; j > 0 && v[j] < v[j - 1]; j--){
+			xounter+=1;
 			swap(v, j, j - 1);
-			counter++;
+
 		}
 	}
-	return counter;
+return xounter;
 }
 
 #endif /* INSERTION_H */
